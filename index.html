@@ -74,7 +74,7 @@
         <h3>Frutillas</h3>
       </article>
       <article class="card card--icon">
-        <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="24" fill="#f4a21d"/><circle cx="32" cy="34" r="19" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"/><path d="M32 15v38M13 34h38M18.500 20.500l27 27M45.500 20.500l-27 27" stroke="#fff" stroke-opacity=".6" stroke-width="2"/><path d="M32 10c2-4 6-6 10-6-1 5-5 7-10 6z" fill="#007A3D"/></svg>
+        <img class="card__thumb" src="assets/img/estante-naranjas.webp" alt="Naranjas frescas apiladas en el estante de la frutería" loading="lazy" width="1600" height="1200" style="object-position: 40% 85%">
         <h3>Naranjas</h3>
       </article>
       <article class="card card--icon">
@@ -86,6 +86,16 @@
         <h3>Uvas</h3>
       </article>
     </div>
+    <div class="gallery" aria-label="Galería del local">
+      <h3>Un vistazo al local</h3>
+      <ul class="gallery__track">
+        <li><button type="button" class="gallery__item" data-full="assets/img/estante-manzanas.webp" data-alt="Estante con manzanas rojas y verdes y limones en la frutería">
+          <img src="assets/img/estante-manzanas.webp" alt="Estante con manzanas rojas y verdes y limones en la frutería" loading="lazy" width="1600" height="1200" style="object-position:50% 70%"><span class="sr-only">Ampliar imagen</span></button></li>
+        <li><button type="button" class="gallery__item" data-full="assets/img/estante-ensaladas.webp" data-alt="Mesa con cebollines, rabanitos, pepinos y espinacas frescas">
+          <img src="assets/img/estante-ensaladas.webp" alt="Mesa con cebollines, rabanitos, pepinos y espinacas frescas" loading="lazy" width="1200" height="1600" style="object-position:50% 62%"><span class="sr-only">Ampliar imagen</span></button></li>
+      </ul>
+    </div>
+    <dialog class="lightbox" aria-label="Imagen ampliada"><button type="button" class="lightbox__close" aria-label="Cerrar">×</button><img alt=""></dialog>
   </div>
 </section>
 

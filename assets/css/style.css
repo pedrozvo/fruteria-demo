@@ -91,3 +91,16 @@ a{color:inherit}
 .nav a:focus-visible,.footer a:focus-visible,.hero .btn:focus-visible{outline-color:#fff}
 .wa-float:focus-visible{outline:3px solid var(--deep);outline-offset:3px}
 
+
+.card__thumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gallery{margin-top:3rem}
+.gallery h3{font-size:1.6rem;margin-bottom:1rem}
+.gallery__track{list-style:none;padding:0 0 .75rem;display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.gallery__track li{flex:0 0 82%;scroll-snap-align:start;max-width:420px}
+.gallery__item{display:block;width:100%;padding:0;border:0;border-radius:16px;overflow:hidden;cursor:zoom-in;background:none}
+.gallery__item img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.lightbox{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:visible}
+.lightbox::backdrop{background:rgba(0,0,0,.85)}
+.lightbox img{max-width:96vw;max-height:90vh;object-fit:contain;border-radius:8px}
+.lightbox__close{position:absolute;top:-2.5rem;right:0;width:44px;height:44px;border:0;border-radius:50%;background:#fff;color:var(--deep);font-size:1.8rem;line-height:1;cursor:pointer}
