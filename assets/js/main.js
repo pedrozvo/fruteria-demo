@@ -15,17 +15,25 @@
 
   // Algunos navegadores bloquean el autoplay: reintentar sin ruido.
   var v = document.querySelector('.hero video');
-  if (v && v.paused) v.play().catch(function () {});
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (v && reduce) {
+    v.removeAttribute('autoplay');
+    v.pause();
+  } else if (v && v.paused) {
+    v.play().catch(function () {});
+  }
 
   var box = document.querySelector('.lightbox');
   if (box) {
     var big = box.querySelector('img');
+    var opener = null;
     document.querySelectorAll('.gallery__item').forEach(function (b) {
       b.addEventListener('click', function () {
-        big.src = b.dataset.full; big.alt = b.dataset.alt; box.showModal();
+        opener = b; big.src = b.dataset.full; big.alt = b.dataset.alt; box.showModal();
       });
     });
     box.querySelector('.lightbox__close').addEventListener('click', function () { box.close(); });
     box.addEventListener('click', function (e) { if (e.target === box || e.target === big) box.close(); });
+    box.addEventListener('close', function () { if (opener) opener.focus(); });
   }
 })();
