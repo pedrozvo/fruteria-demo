@@ -20,7 +20,7 @@
 <meta property="og:url" content="https://pedrozvo.github.io/fruteria-demo/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FruitShop","name":"La Palestina","url":"https://pedrozvo.github.io/fruteria-demo/","image":"https://pedrozvo.github.io/fruteria-demo/assets/img/Frontis.webp","telephone":"+56973490781","address":{"@type":"PostalAddress","streetAddress":"Av. Ogana 1029","addressLocality":"Coyhaique","addressCountry":"CL"},"sameAs":["https://www.instagram.com/la.palestina/","https://www.facebook.com/ComercialLaPalestina/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"09:30","closes":"14:30"}]}</script>
@@ -33,8 +33,12 @@
     <source src="assets/video/hero.mp4" type="video/mp4">
   </video>
   <div class="hero__shade"></div>
+
   <nav class="nav" aria-label="Principal">
-    <a href="#inicio" class="nav__logo">La Palestina</a>
+    <a href="#inicio" class="nav__logo">
+      <span class="nav__logo-es">La Palestina</span>
+      <span class="logo-ar" dir="rtl" lang="ar">فلسطين</span>
+    </a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span></button>
     <ul id="menu">
       <li><a href="#productos">Productos</a></li>
@@ -42,9 +46,13 @@
       <li><a href="#visitanos">Visítanos</a></li>
     </ul>
   </nav>
+
   <div class="hero__content">
     <p class="eyebrow">Frutería de barrio · Coyhaique</p>
-    <h1>La Palestina</h1>
+    <h1 class="hero__title">
+      <span class="hero__title-es">La Palestina</span>
+      <span class="logo-ar hero__title-ar" dir="rtl" lang="ar">فلسطين</span>
+    </h1>
     <p class="hero__tagline">Fruta fresca, de la caja a tu mesa.</p>
     <a class="btn btn--wa" href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Pedir por WhatsApp
@@ -54,50 +62,79 @@
 
 <main id="contenido" tabindex="-1">
 <section class="section" id="productos">
-  <svg class="divider" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#stitch)"/></svg>
   <div class="wrap">
-    <p class="eyebrow eyebrow--dark">Lo que encuentras</p>
-    <h2>Nuestros productos</h2>
-    <p class="lead">Seleccionamos cada día lo mejor para que lleves a casa fruta con sabor de verdad.</p>
+    <header class="section__head">
+      <p class="eyebrow eyebrow--dark">Lo que encuentras</p>
+      <h2 class="section__title">
+        <svg class="olive-ico" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-olive"/></svg>
+        <span>Nuestros productos</span>
+      </h2>
+      <p class="lead">Seleccionamos cada día lo mejor para que lleves a casa fruta con sabor de verdad.</p>
+    </header>
 
     <div class="grid">
-      <article class="card card--photo">
-        <img src="assets/img/ManzanasRojas.webp" alt="Cajón de manzanas rojas brillantes en exhibición" loading="lazy" width="1600" height="1200" style="object-position: 30% 55%">
-        <div class="card__body"><h3>Manzanas rojas</h3><p>Crocantes y dulces.</p></div>
+      <article class="product">
+        <div class="product__media">
+          <img src="assets/img/ManzanasRojas.webp" alt="Cajón de manzanas rojas brillantes en exhibición" loading="lazy" width="1600" height="1200" style="object-position: 35% 55%">
+        </div>
+        <h3 class="product__name">Manzanas rojas</h3>
+        <p class="product__desc">Crocantes y dulces.</p>
       </article>
-      <article class="card card--photo">
-        <img src="assets/img/ManzanasVerdes.webp" alt="Manzanas verdes frescas apiladas en el mostrador" loading="lazy" width="1600" height="1200" style="object-position: 70% 40%">
-        <div class="card__body"><h3>Manzanas verdes</h3><p>Ácidas y refrescantes.</p></div>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="assets/img/ManzanasVerdes.webp" alt="Manzanas verdes frescas apiladas en el mostrador" loading="lazy" width="1600" height="1200" style="object-position: 65% 45%">
+        </div>
+        <h3 class="product__name">Manzanas verdes</h3>
+        <p class="product__desc">Ácidas y refrescantes.</p>
       </article>
-      <article class="card card--photo">
-        <img src="assets/img/PerasyYerba.webp" alt="Peras frescas junto a un paquete de yerba mate" loading="lazy" width="1600" height="1200" style="object-position: 50% 70%">
-        <div class="card__body"><h3>Peras y yerba</h3><p>Para el mate y la merienda.</p></div>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="assets/img/PerasyYerba.webp" alt="Peras frescas junto a un paquete de yerba mate" loading="lazy" width="1600" height="1200" style="object-position: 55% 65%">
+        </div>
+        <h3 class="product__name">Peras y yerba</h3>
+        <p class="product__desc">Para el mate y la merienda.</p>
       </article>
-      <article class="card card--photo">
-        <img src="assets/img/estante-naranjas.webp" alt="Naranjas frescas apiladas en el estante de la frutería" loading="lazy" width="1600" height="1200" style="object-position: 40% 85%">
-        <div class="card__body"><h3>Naranjas</h3></div>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="assets/img/estante-naranjas.webp" alt="Naranjas frescas apiladas en el estante de la frutería" loading="lazy" width="1600" height="1200" style="object-position: 45% 85%">
+        </div>
+        <h3 class="product__name">Naranjas</h3>
       </article>
-      <article class="card card--photo">
-        <img src="assets/img/estante-ensaladas.webp" alt="Mesa con cebollines, rabanitos, pepinos y espinacas frescas" loading="lazy" width="1200" height="1600" style="object-position: 50% 62%">
-        <div class="card__body"><h3>Verduras</h3></div>
+
+      <article class="product">
+        <div class="product__media">
+          <img src="assets/img/estante-ensaladas.webp" alt="Mesa con cebollines, rabanitos, pepinos y espinacas frescas" loading="lazy" width="1200" height="1600" style="object-position: 50% 62%">
+        </div>
+        <h3 class="product__name">Verduras</h3>
       </article>
-      <div class="grid__icons">
-        <article class="card card--icon">
-        <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 20c-8-6-22-2-22 14 0 12 8 24 16 24 3 0 4-1 6-1s3 1 6 1c8 0 16-12 16-24 0-16-14-20-22-14z" fill="#CE1126"/><path d="M32 20c0-6 2-11 7-14" stroke="#0B3D2A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M36 14c6-5 12-3 14 0-5 4-11 4-14 0z" fill="#007A3D"/></svg>
-        <h3>Frutillas</h3>
+
+      <article class="product">
+        <div class="product__media product__media--icon">
+          <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 20c-8-6-22-2-22 14 0 12 8 24 16 24 3 0 4-1 6-1s3 1 6 1c8 0 16-12 16-24 0-16-14-20-22-14z" fill="#CE1126"/><path d="M32 20c0-6 2-11 7-14" stroke="#0B3D2A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M36 14c6-5 12-3 14 0-5 4-11 4-14 0z" fill="#007A3D"/></svg>
+        </div>
+        <h3 class="product__name">Frutillas</h3>
       </article>
-        <article class="card card--icon">
-        <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 40c4 14 24 22 42 8 4-3 6-8 6-12-8 8-24 10-36 2C14 34 10 28 12 14 6 20 4 30 8 40z" fill="#f2d03b"/><path d="M12 14c-1-4 0-8 2-10l4 2c-2 2-3 5-2 8z" fill="#0B3D2A"/></svg>
-        <h3>Bananas</h3>
+
+      <article class="product">
+        <div class="product__media product__media--icon">
+          <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 40c4 14 24 22 42 8 4-3 6-8 6-12-8 8-24 10-36 2C14 34 10 28 12 14 6 20 4 30 8 40z" fill="#e8c32c"/><path d="M12 14c-1-4 0-8 2-10l4 2c-2 2-3 5-2 8z" fill="#0B3D2A"/></svg>
+        </div>
+        <h3 class="product__name">Bananas</h3>
       </article>
-        <article class="card card--icon">
-        <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="28" r="8" fill="#6b2a7a"/><circle cx="36" cy="28" r="8" fill="#6b2a7a"/><circle cx="28" cy="40" r="8" fill="#6b2a7a"/><circle cx="44" cy="40" r="8" fill="#6b2a7a"/><circle cx="28" cy="54" r="7" fill="#6b2a7a"/><path d="M28 20c0-6 3-12 9-14" stroke="#0B3D2A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-        <h3>Uvas</h3>
+
+      <article class="product">
+        <div class="product__media product__media--icon">
+          <svg class="fruit" viewBox="0 0 64 64" aria-hidden="true"><circle cx="20" cy="28" r="8" fill="#5e276d"/><circle cx="36" cy="28" r="8" fill="#5e276d"/><circle cx="28" cy="40" r="8" fill="#5e276d"/><circle cx="44" cy="40" r="8" fill="#5e276d"/><circle cx="28" cy="54" r="7" fill="#5e276d"/><path d="M28 20c0-6 3-12 9-14" stroke="#0B3D2A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="product__name">Uvas</h3>
       </article>
-      </div>
     </div>
+
     <div class="gallery" aria-label="Galería del local">
-      <h3>Un vistazo al local</h3>
+      <h3 class="gallery__title">Un vistazo al local</h3>
       <ul class="gallery__grid">
         <li><button type="button" class="gallery__item" data-full="assets/img/estante-manzanas.webp" data-alt="Estante con manzanas rojas y verdes y limones en la frutería">
           <img src="assets/img/estante-manzanas.webp" alt="Estante con manzanas rojas y verdes y limones en la frutería" loading="lazy" width="1600" height="1200" style="object-position:50% 70%"><span class="sr-only">Ampliar imagen</span></button></li>
@@ -109,53 +146,124 @@
   </div>
 </section>
 
+<div class="tatreez-band" aria-hidden="true">
+  <svg class="tatreez" focusable="false"><rect width="100%" height="100%" fill="url(#tatreez)"/></svg>
+</div>
+
 <section class="section section--white" id="historia">
-  <svg class="divider" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#stitch)"/></svg>
-  <div class="wrap split">
-    <img src="assets/img/InteriorBanderas.webp" alt="Interior del local La Palestina decorado con banderas" loading="lazy" width="1600" height="1200" style="object-position: 50% 35%">
-    <div>
+  <div class="wrap about">
+    <div class="about__media">
+      <img src="assets/img/InteriorBanderas.webp" alt="Interior del local La Palestina con estantes de frutas y verduras" loading="lazy" width="1600" height="1200" style="object-position: 50% 40%">
+    </div>
+    <div class="about__body">
       <p class="eyebrow eyebrow--dark">La Palestina</p>
-      <h2>Quiénes somos</h2>
-      <p>Somos la frutería de tu barrio en Coyhaique: fruta fresca y atención cercana.</p>
+      <h2 class="section__title">
+        <svg class="olive-ico" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-olive"/></svg>
+        <span>Quiénes somos</span>
+      </h2>
+      <p class="about__text">Somos la frutería de tu barrio en Coyhaique: fruta fresca y atención cercana.</p>
     </div>
   </div>
 </section>
 
+<div class="tatreez-band" aria-hidden="true">
+  <svg class="tatreez" focusable="false"><rect width="100%" height="100%" fill="url(#tatreez)"/></svg>
+</div>
+
 <section class="section" id="visitanos">
-  <svg class="divider" aria-hidden="true" focusable="false"><rect width="100%" height="100%" fill="url(#stitch)"/></svg>
   <div class="wrap">
-    <p class="eyebrow eyebrow--dark">Te esperamos</p>
-    <h2>Visítanos</h2>
-    <div class="split split--visit">
-      <div>
-        <img class="visit__img" src="assets/img/Frontis.webp" alt="Fachada de la frutería La Palestina vista desde la calle" loading="lazy" width="1600" height="1200" style="object-position: 50% 60%">
-        <ul class="info">
-          <li><strong>Dirección</strong> Av. Ogana 1029, Coyhaique, Chile</li>
-          <li><strong>Horario</strong>
+    <header class="section__head">
+      <p class="eyebrow eyebrow--dark">Te esperamos</p>
+      <h2 class="section__title">
+        <svg class="olive-ico" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-olive"/></svg>
+        <span>Visítanos</span>
+      </h2>
+    </header>
+
+    <div class="visit">
+      <div class="visit__info">
+        <div class="visit__card">
+          <p class="visit__label">Dirección</p>
+          <p class="visit__address">Av. Ogana 1029, Coyhaique, Chile</p>
+          <div class="actions">
+            <a class="btn btn--wa" href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> WhatsApp
+            </a>
+            <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Ogana%201029%2C%20Coyhaique%2C%20Chile" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg> Cómo llegar
+            </a>
+            <a class="btn btn--ghost" href="tel:+56973490781">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg> Llamar
+            </a>
+          </div>
+        </div>
+
+        <div class="visit__card visit__card--hours">
+          <div class="visit__hours-head">
+            <p class="visit__label">Horario de atención</p>
             <p class="status" id="estado" role="status" hidden></p>
-            <table class="hours"><tbody><tr><th scope="row">Lunes</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Martes</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Miércoles</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Jueves</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Viernes</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Sábado</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Domingo</th><td>9:30 a.m.–2:30 p.m.</td></tr></tbody></table>
-          </li>
-        </ul>
-        <div class="actions">
-          <a class="btn btn--wa" href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos por WhatsApp
-        </a>
-          <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Ogana%201029%2C%20Coyhaique%2C%20Chile" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg> Cómo llegar</a>
-          <a class="btn btn--ghost" href="tel:+56973490781"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg> Llamar</a>
+          </div>
+          <table class="hours">
+            <tbody>
+              <tr><th scope="row">Lunes</th><td>9:00 a.m.–8:00 p.m.</td></tr>
+              <tr><th scope="row">Martes</th><td>9:00 a.m.–8:00 p.m.</td></tr>
+              <tr><th scope="row">Miércoles</th><td>9:00 a.m.–8:00 p.m.</td></tr>
+              <tr><th scope="row">Jueves</th><td>9:00 a.m.–8:00 p.m.</td></tr>
+              <tr><th scope="row">Viernes</th><td>9:00 a.m.–8:00 p.m.</td></tr>
+              <tr><th scope="row">Sábado</th><td>9:00 a.m.–8:00 p.m.</td></tr>
+              <tr><th scope="row">Domingo</th><td>9:30 a.m.–2:30 p.m.</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <iframe class="map" title="Mapa con la ubicación de La Palestina" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.%20Ogana%201029%2C%20Coyhaique%2C%20Chile&output=embed"></iframe>
+
+      <div class="visit__media">
+        <img class="visit__img" src="assets/img/Frontis.webp" alt="Fachada de la frutería La Palestina vista desde la calle" loading="lazy" width="1600" height="1200" style="object-position: 50% 60%">
+        <iframe class="map" title="Mapa con la ubicación de La Palestina" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.%20Ogana%201029%2C%20Coyhaique%2C%20Chile&output=embed"></iframe>
+      </div>
     </div>
   </div>
 </section>
 </main>
 
 <footer class="footer">
-  <ul class="social">
-    <li><a href="https://www.instagram.com/la.palestina/" target="_blank" rel="noopener">Instagram @la.palestina</a></li>
-    <li><a href="https://www.facebook.com/ComercialLaPalestina/" target="_blank" rel="noopener">Facebook</a></li>
-  </ul>
-  <p>© <span id="year">2026</span> La Palestina. Todos los derechos reservados.</p>
+  <div class="tatreez-band tatreez-band--footer" aria-hidden="true">
+    <svg class="tatreez" focusable="false"><rect width="100%" height="100%" fill="url(#tatreez)"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="footer__cols">
+      <div class="footer__col">
+        <div class="footer__brand">
+          <span class="footer__brand-es">La Palestina</span>
+          <span class="logo-ar footer__brand-ar" dir="rtl" lang="ar">فلسطين</span>
+        </div>
+        <h3 class="footer__heading">Contacto</h3>
+        <ul class="footer__list">
+          <li>Av. Ogana 1029, Coyhaique, Chile</li>
+          <li><a href="tel:+56973490781">+56 9 7349 0781</a></li>
+          <li><a href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Horario</h3>
+        <ul class="footer__list">
+          <li><span>Lunes a sábado</span> 9:00 a.m.–8:00 p.m.</li>
+          <li><span>Domingo</span> 9:30 a.m.–2:30 p.m.</li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Redes</h3>
+        <ul class="footer__list">
+          <li><a href="https://www.instagram.com/la.palestina/" target="_blank" rel="noopener">Instagram @la.palestina</a></li>
+          <li><a href="https://www.facebook.com/ComercialLaPalestina/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer__copy">© <span id="year">2026</span> La Palestina. Todos los derechos reservados.</p>
+  </div>
 </footer>
 
 <nav class="mobile-bar" aria-label="Acciones rápidas">
@@ -168,8 +276,34 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><pattern id="stitch" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 3 17 10 10 17 3 10Z M10 7.500 12.500 10 10 12.500 7.500 10Z" fill="none" stroke="#007A3D" stroke-opacity=".15" stroke-width="1"/><path d="M0 10h3M17 10h3M10 0v3M10 17v3" stroke="#007A3D" stroke-opacity=".15" stroke-width="1"/></pattern></defs><symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.200 7 13 7 13s7-7.800 7-13a7 7 0 0 0-7-7zm0 9.500A2.500 2.500 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25 11.400 11.400 0 0 0 3.600.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.2 2.500.6 3.600a1 1 0 0 1-.25 1z"/></symbol><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm5.300 14.100c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.9 2.100c.1.200.1.400 0 .5l-.4.600-.3.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.400.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l2 1c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Motivo tradicional tatreez: estrella de ocho puntas sobre crema -->
+    <pattern id="tatreez" width="28" height="20" patternUnits="userSpaceOnUse">
+      <rect width="28" height="20" fill="#FAF7F0"/>
+      <path fill="#CE1126" fill-opacity=".8" fill-rule="evenodd" d="M10 2.2 L11.3 7 L15.5 4.5 L13 8.7 L17.8 10 L13 11.3 L15.5 15.5 L11.3 13 L10 17.8 L8.7 13 L4.5 15.5 L7 11.3 L2.2 10 L7 8.7 L4.5 4.5 L8.7 7 Z M10 7.6 L12.4 10 L10 12.4 L7.6 10 Z"/>
+      <path fill="#CE1126" fill-opacity=".8" d="M10 9 L11 10 L10 11 L9 10 Z M24 7.8 L26.2 10 L24 12.2 L21.8 10 Z M24 3.8 L25 4.8 L24 5.8 L23 4.8 Z M24 14.2 L25 15.2 L24 16.2 L23 15.2 Z"/>
+    </pattern>
+  </defs>
+  <symbol id="i-olive" viewBox="0 0 24 24">
+    <path d="M3.5 20.5C7.2 15.8 12.8 10.2 20 4.8" fill="none" stroke="#5E6B2F" stroke-width="1.75" stroke-linecap="round"/>
+    <path d="M8.4 15.2C5.8 13.4 5 10.3 6.4 8.2C8.6 9.4 9.5 12.3 8.4 15.2Z" fill="#5E6B2F"/>
+    <path d="M9.4 14.6C12.2 15.9 15.1 15.3 16.7 13.4C14.4 12 11.5 12.6 9.4 14.6Z" fill="#5E6B2F"/>
+    <path d="M13.8 10.2C11.7 8.3 11.3 5.4 12.8 3.5C14.8 4.7 15.2 7.6 13.8 10.2Z" fill="#5E6B2F"/>
+    <path d="M14.8 9.6C17.4 10.6 20.1 9.9 21.5 8.1C19.4 7 16.8 7.7 14.8 9.6Z" fill="#5E6B2F"/>
+    <path d="M18.3 6.3C19.3 4.2 20.9 3.1 22.6 2.9C22.3 4.7 20.7 6.1 18.3 6.3Z" fill="#5E6B2F"/>
+    <ellipse cx="11.2" cy="11.3" rx="1.4" ry="1.9" transform="rotate(-32 11.2 11.3)" fill="#5E6B2F"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.200 7 13 7 13s7-7.800 7-13a7 7 0 0 0-7-7zm0 9.500A2.500 2.500 0 1 1 12 6.500a2.500 2.500 0 0 1 0 5z"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25 11.400 11.400 0 0 0 3.600.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.2 2.500.6 3.600a1 1 0 0 1-.25 1z"/>
+  </symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2a10 10 0 0 0-8.600 15.100L2 22l5-1.300A10 10 0 1 0 12 2zm5.300 14.100c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.9 2.100c.1.200.1.400 0 .5l-.4.600-.3.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2.100 1.300 2.400 1.400.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l2 1c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/>
+  </symbol>
+</svg>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
-
