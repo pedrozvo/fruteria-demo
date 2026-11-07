@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La Palestina · Frutería de barrio en [CIUDAD]</title>
-<meta name="description" content="La Palestina, frutería de barrio en [CIUDAD]. Frutas frescas, atención familiar. Escríbenos por WhatsApp.">
+<title>La Palestina · Frutería de barrio en Coyhaique</title>
+<meta name="description" content="La Palestina, frutería de barrio en Coyhaique. Frutas frescas, atención familiar. Escríbenos por WhatsApp.">
 <meta name="theme-color" content="#0B3D2A">
 <meta property="og:type" content="website">
 <meta property="og:title" content="La Palestina · Frutería de barrio">
-<meta property="og:description" content="Frutas frescas todos los días en [CIUDAD]. ¡Pasa a visitarnos o escríbenos por WhatsApp!">
-<meta property="og:image" content="assets/img/Frontis.webp">
+<meta property="og:description" content="Frutas frescas todos los días en Coyhaique. ¡Pasa a visitarnos o escríbenos por WhatsApp!">
+<meta property="og:image" content="https://pedrozvo.github.io/fruteria-demo/assets/img/Frontis.webp">
 <meta property="og:image:alt" content="Frontis de la frutería La Palestina">
-<meta property="og:locale" content="es_LA">
+<meta property="og:locale" content="es_CL">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pedrozvo.github.io/fruteria-demo/assets/img/Frontis.webp">
+<meta property="og:url" content="https://pedrozvo.github.io/fruteria-demo/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍎</text></svg>">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml"><text y='.9em' font-size='90'>🍎</text></svg>">
 <link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FruitShop","name":"La Palestina","url":"https://pedrozvo.github.io/fruteria-demo/","image":"https://pedrozvo.github.io/fruteria-demo/assets/img/Frontis.webp","telephone":"+56973490781","address":{"@type":"PostalAddress","streetAddress":"Av. Ogana 1029","addressLocality":"Coyhaique","addressCountry":"CL"},"sameAs":["https://www.instagram.com/la.palestina/","https://www.facebook.com/ComercialLaPalestina/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"20:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"09:30","closes":"14:30"}]}</script>
 </head>
 <body>
 
@@ -31,15 +34,15 @@
     <button class="nav__toggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span></button>
     <ul id="menu">
       <li><a href="#productos">Productos</a></li>
-      <li><a href="#historia">Historia</a></li>
+      <li><a href="#historia">Quiénes somos</a></li>
       <li><a href="#visitanos">Visítanos</a></li>
     </ul>
   </nav>
   <div class="hero__content">
-    <p class="eyebrow">Frutería de barrio · [CIUDAD]</p>
+    <p class="eyebrow">Frutería de barrio · Coyhaique</p>
     <h1>La Palestina</h1>
     <p class="hero__tagline">Fruta fresca, de la caja a tu mesa.</p>
-    <a class="btn btn--wa" href="https://wa.me/[NÚMERO CON CÓDIGO DE PAÍS]" target="_blank" rel="noopener">
+    <a class="btn btn--wa" href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener">
       <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Pedir por WhatsApp
     </a>
   </div>
@@ -90,10 +93,9 @@
   <div class="wrap split">
     <img src="assets/img/InteriorBanderas.webp" alt="Interior del local La Palestina decorado con banderas" loading="lazy" width="1600" height="1200" style="object-position: 50% 35%">
     <div>
-      <p class="eyebrow">Nuestra historia</p>
-      <h2>Un negocio de familia</h2>
-      <p>[TEXTO: cuenta cómo nació La Palestina, quién la fundó y desde cuándo atiende al barrio.]</p>
-      <p>[TEXTO: qué hace especial a la frutería: trato cercano, proveedores, frescura diaria.]</p>
+      <p class="eyebrow">La Palestina</p>
+      <h2>Quiénes somos</h2>
+      <p>Somos la frutería de tu barrio en Coyhaique: fruta fresca y atención cercana.</p>
     </div>
   </div>
 </section>
@@ -106,25 +108,30 @@
       <div>
         <img class="visit__img" src="assets/img/Frontis.webp" alt="Fachada de la frutería La Palestina vista desde la calle" loading="lazy" width="1600" height="1200" style="object-position: 50% 60%">
         <ul class="info">
-          <li><strong>Dirección</strong> [DIRECCIÓN]</li>
-          <li><strong>Horario</strong> [HORARIO]</li>
+          <li><strong>Dirección</strong> Av. Ogana 1029, Coyhaique, Chile</li>
+          <li><strong>Horario</strong>
+            <table class="hours"><tbody><tr><th scope="row">Lunes</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Martes</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Miércoles</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Jueves</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Viernes</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Sábado</th><td>9:00 a.m.–8:00 p.m.</td></tr><tr><th scope="row">Domingo</th><td>9:30 a.m.–2:30 p.m.</td></tr></tbody></table>
+          </li>
         </ul>
-        <a class="btn btn--wa" href="https://wa.me/[NÚMERO CON CÓDIGO DE PAÍS]" target="_blank" rel="noopener">
+        <a class="btn btn--wa" href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener">
           <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg> Escríbenos por WhatsApp
         </a>
       </div>
-      <iframe class="map" title="Mapa con la ubicación de La Palestina" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=La%20Palestina%20fruter%C3%ADa&output=embed"></iframe>
+      <iframe class="map" title="Mapa con la ubicación de La Palestina" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.%20Ogana%201029%2C%20Coyhaique%2C%20Chile&output=embed"></iframe>
     </div>
   </div>
 </section>
 </main>
 
 <footer class="footer">
-  <p><a href="[INSTAGRAM]" target="_blank" rel="noopener">Instagram</a></p>
+  <ul class="social">
+    <li><a href="https://www.instagram.com/la.palestina/" target="_blank" rel="noopener">Instagram @la.palestina</a></li>
+    <li><a href="https://www.facebook.com/ComercialLaPalestina/" target="_blank" rel="noopener">Facebook</a></li>
+  </ul>
   <p>© <span id="year">2026</span> La Palestina. Todos los derechos reservados.</p>
 </footer>
 
-<a class="wa-float" href="https://wa.me/[NÚMERO CON CÓDIGO DE PAÍS]" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+<a class="wa-float" href="https://wa.me/56973490781?text=Hola%2C%20quisiera%20consultar%20por%20fruta" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
 </a>
 
