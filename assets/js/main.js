@@ -13,9 +13,9 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Video del hero: con prefers-reduced-motion deja solo el poster y avisa en consola;
-  // en caso normal arranca silenciado, registra video.error?.code si ocurre error,
-  // y si play() falla reintenta en el primer scroll o toque.
+  // Video del hero: SIEMPRE intenta reproducirse (muted, loop, playsinline)
+  // con reintento en el primer scroll o toque. Si el usuario tiene prefers-reduced-motion,
+  // muestra un botón pequeño y discreto de pausa/reproducir en la esquina inferior derecha.
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var video = document.querySelector('.hero video');
   if (video) {
@@ -25,45 +25,61 @@
       }
     });
 
-    if (reduce) {
-      video.removeAttribute('autoplay');
-      video.pause();
-      while (video.firstChild) {
-        video.removeChild(video.firstChild);
-      }
-      video.removeAttribute('src');
-      video.load();
-      console.info('prefers-reduced-motion: reduce activo; se muestra solo el poster del hero.');
-    } else {
-      video.defaultMuted = true;
+    video.defaultMuted = true;
+    video.muted = true;
+    video.loop = true;
+    video.playsInline = true;
+
+    var retryEvents = ['scroll', 'touchstart', 'pointerdown', 'keydown', 'click'];
+    var onFirstInteraction = function () {
       video.muted = true;
-      var retryEvents = ['scroll', 'touchstart', 'pointerdown', 'keydown', 'click'];
-      var onFirstInteraction = function () {
-        video.muted = true;
-        var p = video.play();
-        if (p && typeof p.then === 'function') {
-          p.then(function () {
-            retryEvents.forEach(function (ev) {
-              window.removeEventListener(ev, onFirstInteraction);
-            });
-          }).catch(function () {
-            if (video.error && video.error.code) {
-              console.warn('Error al reintentar video del hero, code:', video.error.code);
-            }
-          });
-        }
-      };
-      var playPromise = video.play();
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(function () {
-          if (video.error && video.error.code) {
-            console.warn('Error inicial en video del hero, code:', video.error.code);
-          }
+      var p = video.play();
+      if (p && typeof p.then === 'function') {
+        p.then(function () {
           retryEvents.forEach(function (ev) {
-            window.addEventListener(ev, onFirstInteraction, { once: true, passive: true });
+            window.removeEventListener(ev, onFirstInteraction);
           });
-        });
+        }).catch(function () {});
       }
+    };
+
+    var playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(function () {
+        if (video.error && video.error.code) {
+          console.warn('Error inicial en video del hero, code:', video.error.code);
+        }
+        retryEvents.forEach(function (ev) {
+          window.addEventListener(ev, onFirstInteraction, { once: true, passive: true });
+        });
+      });
+    }
+
+    if (reduce) {
+      var hero = document.querySelector('.hero');
+      var motionBtn = document.createElement('button');
+      motionBtn.type = 'button';
+      motionBtn.className = 'hero__motion-btn';
+      var syncMotionBtn = function () {
+        var paused = video.paused;
+        motionBtn.setAttribute('aria-label', paused ? 'Reproducir video de fondo' : 'Pausar video de fondo');
+        motionBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+        motionBtn.textContent = paused ? 'Reproducir video' : 'Pausar video';
+      };
+      syncMotionBtn();
+      video.addEventListener('play', syncMotionBtn);
+      video.addEventListener('pause', syncMotionBtn);
+      motionBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (video.paused) {
+          video.muted = true;
+          video.play().catch(function () {});
+        } else {
+          video.pause();
+        }
+        syncMotionBtn();
+      });
+      hero.appendChild(motionBtn);
     }
   }
 

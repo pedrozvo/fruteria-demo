@@ -97,7 +97,7 @@ a {
 }
 
 .section__head {
-  margin-bottom: 2.75rem;
+  margin-bottom: 2.5rem;
 }
 
 .section__title {
@@ -115,10 +115,12 @@ a {
 }
 
 .lead {
-  max-width: 40rem;
+  max-width: 34rem;
   font-size: 1.125rem;
   line-height: 1.7;
   color: var(--muted);
+  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .eyebrow {
@@ -134,7 +136,7 @@ a {
   color: var(--green);
 }
 
-/* Hero (autoplay verificado; se oculta el botón nativo de inicio en WebKit/iOS ahorro de batería) */
+/* Hero */
 video::-webkit-media-controls-start-playback-button {
   display: none !important;
   -webkit-appearance: none;
@@ -201,10 +203,45 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .hero__tagline {
-  font-size: 1.2rem;
-  margin: 0.9rem 0 1.85rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.9rem 0 0.3rem;
+  max-width: 30rem;
+  color: var(--crema-claro);
+}
+
+.hero__sub {
+  font-size: 0.98rem;
+  margin: 0 0 1.75rem;
   max-width: 28rem;
   color: var(--crema);
+  letter-spacing: 0.02em;
+}
+
+/* Botón discreto de pausa/reproducción en esquina inferior derecha (solo con movimiento reducido) */
+.hero__motion-btn {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 3;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(15, 59, 46, 0.74);
+  color: var(--crema-claro);
+  border: 1px solid rgba(246, 240, 225, 0.34);
+  cursor: pointer;
+}
+
+.hero__motion-btn:hover {
+  background: var(--deep);
+}
+
+.hero__motion-btn:focus-visible {
+  outline-color: var(--crema-claro);
 }
 
 /* Botones */
@@ -369,6 +406,42 @@ video::-webkit-media-controls-start-playback-button {
   outline-color: var(--green);
 }
 
+/* Venta al detalle y al por mayor */
+.sales-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+  align-items: stretch;
+}
+
+.sales-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--crema-claro);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--green);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+}
+
+.sales-card__title {
+  font-size: 1.38rem;
+  margin-bottom: 0.45rem;
+  color: var(--deep);
+}
+
+.sales-card__text {
+  color: var(--muted);
+  margin-bottom: 1.4rem;
+  line-height: 1.65;
+}
+
+.sales-card .btn {
+  margin-top: auto;
+}
+
 /* Productos: proporciones naturales 4/3 con tarjetas en --crema-claro */
 .grid {
   display: grid;
@@ -436,10 +509,10 @@ video::-webkit-media-controls-start-playback-button {
   margin-top: 0.18rem;
 }
 
-/* Galería con proporciones naturales (4/3 y 3/4) */
+/* Galería "Un vistazo al local": 2 fotos en 4/3 con la misma altura */
 .gallery {
-  margin-top: 4.75rem;
-  padding-top: 3.25rem;
+  margin-top: 4.5rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--line);
 }
 
@@ -453,17 +526,26 @@ video::-webkit-media-controls-start-playback-button {
 
 .gallery__grid {
   list-style: none;
+  margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.35rem;
-  align-items: start;
+  align-items: stretch;
+}
+
+.gallery__grid li {
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .gallery__item {
   display: block;
   width: 100%;
+  margin: 0;
   padding: 0;
+  aspect-ratio: 4 / 3;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
@@ -474,14 +556,11 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .gallery__item img {
+  display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   transition: transform 0.55s ease;
-}
-
-.gallery__tall .gallery__item img {
-  aspect-ratio: 3 / 4;
 }
 
 .gallery__item:hover {
@@ -502,6 +581,10 @@ video::-webkit-media-controls-start-playback-button {
   overflow: visible;
 }
 
+.lightbox:not([open]) {
+  display: none;
+}
+
 .lightbox::backdrop {
   background: rgba(15, 59, 46, 0.88);
 }
@@ -509,6 +592,8 @@ video::-webkit-media-controls-start-playback-button {
 .lightbox img {
   max-width: 96vw;
   max-height: 90vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 12px;
 }
@@ -943,14 +1028,19 @@ main:focus {
     padding-bottom: 5.5rem;
   }
 
+  .sales-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
   .grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.85rem 1.4rem;
   }
 
   .gallery__grid {
-    grid-template-columns: 1.15fr 0.85fr;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
   }
 
   .about {
@@ -995,6 +1085,10 @@ main:focus {
   /* Más aire entre secciones en escritorio: 112 px (dentro de 96–128 px) */
   .section {
     padding: 7rem 0;
+  }
+
+  .sales-grid {
+    gap: 2.25rem;
   }
 
   .grid {
