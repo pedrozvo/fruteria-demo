@@ -2,14 +2,13 @@
   --deep: #0F3B2E;
   --green: #1F6B45;
   --olive: #6B7A3A;
-  --cream: #F4EEDF;
-  --red: #A4332B;
+  --crema: #F6F0E1;
+  --crema-claro: #FBF7EC;
+  --crema-oscuro: #EDE4CF;
   --clay: #A4332B;
   --gold: #B8892B;
   --text: #1B1B1B;
   --muted: #34413A;
-  --white: #FBF8F1;
-  --surface: #FFFFFF;
   --line: rgba(15, 59, 46, 0.12);
   --shadow: 0 4px 18px rgba(15, 59, 46, 0.05);
   --shadow-hover: 0 10px 26px rgba(15, 59, 46, 0.10);
@@ -35,7 +34,7 @@ html {
 body {
   font-family: var(--sans);
   color: var(--text);
-  background-color: var(--cream);
+  background-color: var(--crema);
   background-image: var(--grain);
   line-height: 1.65;
   font-size: 1.0625rem;
@@ -83,37 +82,18 @@ a {
   padding-block: 0.08em;
 }
 
-/* Tatreez: separadores finos de 20 px (entre 16 y 24 px) en rojo arcilla */
-.tatreez-band {
-  width: 100%;
-  height: 20px;
-  background: var(--cream);
-  border-block: 1px solid rgba(15, 59, 46, 0.09);
-  overflow: hidden;
-}
-
-.tatreez-band--footer {
-  border-top: 1px solid rgba(184, 137, 43, 0.35);
-  border-bottom: 1px solid rgba(15, 59, 46, 0.2);
-}
-
-.tatreez {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* Secciones con textura sutil (3.5 % opacidad) en fondos crema */
+/* Secciones con textura sutil (3.5 % opacidad) y alternancia en crema oscuro */
 .section {
   position: relative;
   padding: 4.75rem 0;
-  background-color: var(--cream);
+  background-color: var(--crema);
   background-image: var(--grain);
 }
 
-.section--white {
-  background-color: var(--white);
-  background-image: none;
+.section--alt {
+  background-color: var(--crema-oscuro);
+  background-image: var(--grain);
+  border-block: 1px solid var(--line);
 }
 
 .section__head {
@@ -142,40 +122,20 @@ a {
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-size: 0.76rem;
-  color: var(--cream);
+  color: var(--crema-claro);
   margin-bottom: 0.65rem;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 18px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--gold);
-  flex: none;
 }
 
 .eyebrow--dark {
   color: var(--green);
 }
 
-/* Hero y ocultamiento de controles nativos del video */
+/* Hero (autoplay verificado; se oculta el botón nativo de inicio en WebKit/iOS ahorro de batería) */
 video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
-
-video::-webkit-media-controls,
-video::-webkit-media-controls-panel,
-video::-webkit-media-controls-play-button,
-video::-webkit-media-controls-overlay-play-button {
   display: none !important;
   -webkit-appearance: none;
 }
@@ -185,7 +145,7 @@ video::-webkit-media-controls-overlay-play-button {
   min-height: 92svh;
   display: flex;
   align-items: flex-end;
-  color: #fff;
+  color: var(--crema-claro);
   overflow: hidden;
   background: var(--deep);
 }
@@ -223,7 +183,7 @@ video::-webkit-media-controls-overlay-play-button {
 }
 
 .hero__title {
-  color: #fff;
+  color: var(--crema-claro);
   font-weight: 600;
   line-height: 1.04;
   letter-spacing: -0.02em;
@@ -236,7 +196,7 @@ video::-webkit-media-controls-overlay-play-button {
 
 .hero__title-ar {
   font-size: clamp(1.45rem, 4vw, 2.25rem);
-  color: var(--cream);
+  color: var(--crema);
   margin-top: 0.15rem;
 }
 
@@ -244,7 +204,7 @@ video::-webkit-media-controls-overlay-play-button {
   font-size: 1.2rem;
   margin: 0.9rem 0 1.85rem;
   max-width: 28rem;
-  color: var(--cream);
+  color: var(--crema);
 }
 
 /* Botones */
@@ -263,7 +223,7 @@ video::-webkit-media-controls-overlay-play-button {
 
 .btn--wa {
   background: var(--green);
-  color: #fff;
+  color: var(--crema-claro);
   border: 1px solid var(--green);
   box-shadow: 0 4px 14px rgba(15, 59, 46, 0.18);
 }
@@ -275,19 +235,19 @@ video::-webkit-media-controls-overlay-play-button {
 }
 
 .btn--ghost {
-  background: var(--cream);
+  background: var(--crema);
   color: var(--deep);
   border: 1px solid rgba(15, 59, 46, 0.24);
 }
 
 .btn--ghost:hover {
-  background: rgba(31, 107, 69, 0.09);
+  background: var(--crema-oscuro);
   border-color: var(--green);
   transform: translateY(-1px);
 }
 
 :focus-visible {
-  outline: 3px solid var(--clay);
+  outline: 3px solid var(--green);
   outline-offset: 3px;
 }
 
@@ -310,7 +270,7 @@ video::-webkit-media-controls-overlay-play-button {
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
-  color: #fff;
+  color: var(--crema-claro);
   line-height: 1.1;
 }
 
@@ -323,7 +283,7 @@ video::-webkit-media-controls-overlay-play-button {
 .nav__logo .logo-ar {
   font-size: 0.92rem;
   line-height: 1.55;
-  color: var(--cream);
+  color: var(--crema);
 }
 
 .nav ul {
@@ -347,7 +307,7 @@ video::-webkit-media-controls-overlay-play-button {
   padding: 0.95rem 1.25rem;
   text-decoration: none;
   font-weight: 600;
-  color: #fff;
+  color: var(--crema-claro);
 }
 
 .nav__toggle {
@@ -365,12 +325,12 @@ video::-webkit-media-controls-overlay-play-button {
   display: block;
   width: 24px;
   height: 2px;
-  background: #fff;
+  background: var(--crema-claro);
   border-radius: 2px;
 }
 
 .nav--scrolled {
-  background: rgba(244, 238, 223, 0.95);
+  background: rgba(246, 240, 225, 0.95);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 0 1px 12px rgba(15, 59, 46, 0.08);
@@ -392,7 +352,7 @@ video::-webkit-media-controls-overlay-play-button {
 
 @media (max-width: 767px) {
   .nav--scrolled ul {
-    background: var(--cream);
+    background: var(--crema);
     box-shadow: 0 8px 18px rgba(15, 59, 46, 0.12);
   }
 }
@@ -401,15 +361,15 @@ video::-webkit-media-controls-overlay-play-button {
 .footer a:focus-visible,
 .hero .btn:focus-visible,
 .nav__toggle:focus-visible {
-  outline-color: #fff;
+  outline-color: var(--crema-claro);
 }
 
 .nav--scrolled a:focus-visible,
 .nav--scrolled .nav__toggle:focus-visible {
-  outline-color: var(--clay);
+  outline-color: var(--green);
 }
 
-/* Productos: proporciones naturales 4/3 con radios de 14 px */
+/* Productos: proporciones naturales 4/3 con tarjetas en --crema-claro */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -426,7 +386,7 @@ video::-webkit-media-controls-overlay-play-button {
   aspect-ratio: 4 / 3;
   border-radius: var(--radius);
   overflow: hidden;
-  background: var(--surface);
+  background: var(--crema-claro);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -442,7 +402,7 @@ video::-webkit-media-controls-overlay-play-button {
 .product__media--icon {
   display: grid;
   place-items: center;
-  background: linear-gradient(180deg, var(--surface) 0%, var(--cream) 100%);
+  background: linear-gradient(180deg, var(--crema-claro) 0%, var(--crema) 100%);
 }
 
 .fruit {
@@ -508,7 +468,7 @@ video::-webkit-media-controls-overlay-play-button {
   border-radius: var(--radius);
   overflow: hidden;
   cursor: zoom-in;
-  background: var(--surface);
+  background: var(--crema-claro);
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -561,7 +521,7 @@ video::-webkit-media-controls-overlay-play-button {
   height: 44px;
   border: 0;
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--crema-claro);
   color: var(--deep);
   font-size: 1.8rem;
   line-height: 1;
@@ -589,7 +549,7 @@ video::-webkit-media-controls-overlay-play-button {
   overflow: hidden;
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-  background: var(--cream);
+  background: var(--crema-claro);
 }
 
 .about__media img {
@@ -623,7 +583,7 @@ video::-webkit-media-controls-overlay-play-button {
 }
 
 .visit__card {
-  background: var(--surface);
+  background: var(--crema-claro);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 1.65rem;
@@ -696,6 +656,7 @@ video::-webkit-media-controls-overlay-play-button {
   background: var(--green);
 }
 
+/* Rojo arcilla funcional para el estado Cerrado */
 .status--closed {
   color: var(--clay);
   background: rgba(164, 51, 43, 0.11);
@@ -749,23 +710,44 @@ video::-webkit-media-controls-overlay-play-button {
   height: 270px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background: var(--cream);
+  background: var(--crema-oscuro);
   box-shadow: var(--shadow);
 }
 
-/* Footer en 3 columnas con borde superior tatreez */
+/* Footer en 3 columnas con tarjeta crema para el logo */
 .footer {
   background: var(--deep);
-  color: var(--cream);
+  color: var(--crema);
   font-size: 0.96rem;
   padding-bottom: 6rem;
+  border-top: 1px solid rgba(246, 240, 225, 0.16);
 }
 
 .footer__cols {
   display: grid;
   gap: 2.25rem;
   padding: 3.5rem 0 2.5rem;
-  border-bottom: 1px solid rgba(244, 238, 223, 0.15);
+  border-bottom: 1px solid rgba(246, 240, 225, 0.15);
+}
+
+.footer__logo-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 0.9rem;
+  background: var(--crema-claro);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(246, 240, 225, 0.25);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.footer__logo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  mix-blend-mode: multiply;
 }
 
 .footer__brand {
@@ -777,13 +759,13 @@ video::-webkit-media-controls-overlay-play-button {
   font-family: var(--serif);
   font-size: 1.38rem;
   font-weight: 600;
-  color: var(--cream);
+  color: var(--crema-claro);
   line-height: 1.15;
 }
 
 .footer__brand-ar {
   font-size: 1.02rem;
-  color: var(--cream);
+  color: var(--crema);
 }
 
 .footer__heading {
@@ -792,7 +774,7 @@ video::-webkit-media-controls-overlay-play-button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--cream);
+  color: var(--crema-claro);
   margin-bottom: 0.85rem;
 }
 
@@ -805,25 +787,25 @@ video::-webkit-media-controls-overlay-play-button {
 
 .footer__list span {
   font-weight: 700;
-  color: var(--cream);
+  color: var(--crema-claro);
   display: block;
 }
 
 .footer a {
-  color: #fff;
+  color: var(--crema-claro);
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: rgba(244, 238, 223, 0.45);
+  text-decoration-color: rgba(246, 240, 225, 0.45);
 }
 
 .footer a:hover {
-  text-decoration-color: #fff;
+  text-decoration-color: var(--crema-claro);
 }
 
 .footer__copy {
   padding-top: 1.75rem;
   font-size: 0.88rem;
-  color: rgba(244, 238, 223, 0.85);
+  color: rgba(246, 240, 225, 0.85);
 }
 
 /* Barra inferior móvil y botón flotante en escritorio */
@@ -834,7 +816,7 @@ video::-webkit-media-controls-overlay-play-button {
   bottom: 0;
   z-index: 30;
   display: flex;
-  background: rgba(244, 238, 223, 0.96);
+  background: rgba(246, 240, 225, 0.96);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-top: 1px solid var(--line);
@@ -862,7 +844,7 @@ video::-webkit-media-controls-overlay-play-button {
 
 .mobile-bar__wa {
   background: var(--green);
-  color: #fff !important;
+  color: var(--crema-claro) !important;
 }
 
 .wa-float {
@@ -874,8 +856,8 @@ video::-webkit-media-controls-overlay-play-button {
   height: 56px;
   border-radius: 50%;
   background: var(--green);
-  border: 2px solid #fff;
-  color: #fff;
+  border: 2px solid var(--crema-claro);
+  color: var(--crema-claro);
   display: none;
   place-items: center;
   box-shadow: 0 4px 16px rgba(15, 59, 46, 0.25);
@@ -903,7 +885,7 @@ video::-webkit-media-controls-overlay-play-button {
   left: 1rem;
   top: -4rem;
   z-index: 100;
-  background: var(--surface);
+  background: var(--crema-claro);
   color: var(--deep);
   padding: 0.75rem 1.25rem;
   border-radius: 12px;

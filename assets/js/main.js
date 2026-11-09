@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   var toggle = document.querySelector('.nav__toggle');
   var menu = document.getElementById('menu');
   function setMenu(open) {
@@ -13,11 +13,18 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Video del hero: con prefers-reduced-motion deja solo el poster;
-  // en caso normal arranca silenciado y si falla reintenta en el primer scroll o toque.
+  // Video del hero: con prefers-reduced-motion deja solo el poster y avisa en consola;
+  // en caso normal arranca silenciado, registra video.error?.code si ocurre error,
+  // y si play() falla reintenta en el primer scroll o toque.
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var video = document.querySelector('.hero video');
   if (video) {
+    video.addEventListener('error', function () {
+      if (video.error && video.error.code) {
+        console.warn('Error en video del hero, code:', video.error.code);
+      }
+    });
+
     if (reduce) {
       video.removeAttribute('autoplay');
       video.pause();
@@ -26,21 +33,32 @@
       }
       video.removeAttribute('src');
       video.load();
+      console.info('prefers-reduced-motion: reduce activo; se muestra solo el poster del hero.');
     } else {
       video.defaultMuted = true;
       video.muted = true;
       var retryEvents = ['scroll', 'touchstart', 'pointerdown', 'keydown', 'click'];
       var onFirstInteraction = function () {
         video.muted = true;
-        video.play().then(function () {
-          retryEvents.forEach(function (ev) {
-            window.removeEventListener(ev, onFirstInteraction);
+        var p = video.play();
+        if (p && typeof p.then === 'function') {
+          p.then(function () {
+            retryEvents.forEach(function (ev) {
+              window.removeEventListener(ev, onFirstInteraction);
+            });
+          }).catch(function () {
+            if (video.error && video.error.code) {
+              console.warn('Error al reintentar video del hero, code:', video.error.code);
+            }
           });
-        }).catch(function () {});
+        }
       };
       var playPromise = video.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(function () {
+          if (video.error && video.error.code) {
+            console.warn('Error inicial en video del hero, code:', video.error.code);
+          }
           retryEvents.forEach(function (ev) {
             window.addEventListener(ev, onFirstInteraction, { once: true, passive: true });
           });
