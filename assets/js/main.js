@@ -13,58 +13,71 @@
   });
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Video del hero: con movimiento reducido se queda el poster; en los demas
-  // casos se intenta reproducir y, si el navegador lo bloquea, el poster sigue visible.
-  var v = document.querySelector('.hero video');
-  if (v) {
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Video del hero: con prefers-reduced-motion deja solo el poster;
+  // en caso normal arranca silenciado y si falla reintenta en el primer scroll o toque.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var video = document.querySelector('.hero video');
+  if (video) {
     if (reduce) {
-      v.removeAttribute('autoplay');
-      v.pause();
-      // Con movimiento reducido el usuario puede iniciar el video a mano.
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'hero__toggle';
-      btn.setAttribute('aria-label', 'Reproducir video de fondo');
-      btn.textContent = '\u25B6';
-      btn.addEventListener('click', function () {
-        if (v.paused) {
-          v.play().then(function () {
-            btn.textContent = '\u275A\u275A';
-            btn.setAttribute('aria-label', 'Pausar video de fondo');
-          }).catch(function () {});
-        } else {
-          v.pause();
-          btn.textContent = '\u25B6';
-          btn.setAttribute('aria-label', 'Reproducir video de fondo');
-        }
-      });
-      document.querySelector('.hero').appendChild(btn);
+      video.removeAttribute('autoplay');
+      video.pause();
+      while (video.firstChild) {
+        video.removeChild(video.firstChild);
+      }
+      video.removeAttribute('src');
+      video.load();
     } else {
-      v.muted = true;
-      var p = v.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(function () { v.pause(); v.load(); });
+      video.defaultMuted = true;
+      video.muted = true;
+      var retryEvents = ['scroll', 'touchstart', 'pointerdown', 'keydown', 'click'];
+      var onFirstInteraction = function () {
+        video.muted = true;
+        video.play().then(function () {
+          retryEvents.forEach(function (ev) {
+            window.removeEventListener(ev, onFirstInteraction);
+          });
+        }).catch(function () {});
+      };
+      var playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {
+          retryEvents.forEach(function (ev) {
+            window.addEventListener(ev, onFirstInteraction, { once: true, passive: true });
+          });
+        });
       }
     }
   }
+
+  // Lightbox de galería
   var box = document.querySelector('.lightbox');
   if (box) {
     var big = box.querySelector('img');
     var opener = null;
     document.querySelectorAll('.gallery__item').forEach(function (b) {
       b.addEventListener('click', function () {
-        opener = b; big.src = b.dataset.full; big.alt = b.dataset.alt; box.showModal();
+        opener = b;
+        big.src = b.dataset.full;
+        big.alt = b.dataset.alt;
+        box.showModal();
       });
     });
-    box.querySelector('.lightbox__close').addEventListener('click', function () { box.close(); });
-    box.addEventListener('click', function (e) { if (e.target === box || e.target === big) box.close(); });
-    box.addEventListener('close', function () { if (opener) opener.focus(); });
+    box.querySelector('.lightbox__close').addEventListener('click', function () {
+      box.close();
+    });
+    box.addEventListener('click', function (e) {
+      if (e.target === box || e.target === big) box.close();
+    });
+    box.addEventListener('close', function () {
+      if (opener) opener.focus();
+    });
   }
 
   // Menú fijo: fondo translúcido al hacer scroll.
   var nav = document.querySelector('.nav');
-  function onScroll() { nav.classList.toggle('nav--scrolled', window.scrollY > 40); }
+  function onScroll() {
+    nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -78,16 +91,21 @@
     return h * 60 + parseInt(m[2], 10);
   }
   try {
-    // La tabla va de lunes a domingo; indice 0 = lunes.
     var sched = [];
     rows.forEach(function (r, i) {
       var parts = r.querySelector('td').textContent.split(/[–-]/);
       sched[i] = [toMin(parts[0]), toMin(parts[1])];
     });
     var parts = new Intl.DateTimeFormat('en-US', {
-      timeZone: 'America/Santiago', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23'
+      timeZone: 'America/Santiago',
+      weekday: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+      hourCycle: 'h23'
     }).formatToParts(new Date());
-    var get = function (t) { return parts.filter(function (p) { return p.type === t; })[0].value; };
+    var get = function (t) {
+      return parts.filter(function (p) { return p.type === t; })[0].value;
+    };
     var dayIdx = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(get('weekday'));
     var now = parseInt(get('hour'), 10) * 60 + parseInt(get('minute'), 10);
     var s = sched[dayIdx];
@@ -99,11 +117,14 @@
     }
   } catch (e) { /* sin indicador si el navegador no soporta Intl con zona horaria */ }
 
-  // Aparición suave de las secciones (desactivada con movimiento reducido).
+  // Aparición suave de las secciones con IntersectionObserver (desactivada con prefers-reduced-motion).
   if (!reduce && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        if (en.isIntersecting) {
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.section > .wrap').forEach(function (el) {
