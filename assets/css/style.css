@@ -115,7 +115,7 @@ a {
 }
 
 .lead {
-  max-width: 34rem;
+  max-width: 44rem;
   font-size: 1.125rem;
   line-height: 1.7;
   color: var(--muted);
@@ -206,16 +206,20 @@ video::-webkit-media-controls-start-playback-button {
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0.9rem 0 0.3rem;
-  max-width: 30rem;
+  max-width: 32rem;
   color: var(--crema-claro);
+  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .hero__sub {
   font-size: 0.98rem;
   margin: 0 0 1.75rem;
-  max-width: 28rem;
+  max-width: 34rem;
   color: var(--crema);
   letter-spacing: 0.02em;
+  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 /* Botón discreto de pausa/reproducción en esquina inferior derecha (solo con movimiento reducido) */
@@ -436,10 +440,97 @@ video::-webkit-media-controls-start-playback-button {
   color: var(--muted);
   margin-bottom: 1.4rem;
   line-height: 1.65;
+  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 .sales-card .btn {
   margin-top: auto;
+}
+
+/* Grilla de 6 categorías (2 cols móvil, 3 cols escritorio) */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.1rem;
+}
+
+.cat-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--crema-claro);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.cat-card__media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--crema-claro) 0%, var(--crema) 100%);
+  border-bottom: 1px solid var(--line);
+}
+
+.cat-card__media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.cat-card__media--icon {
+  display: grid;
+  place-items: center;
+}
+
+.cat-card__placeholder {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.35s ease;
+}
+
+.cat-card__body {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 0.9rem;
+  flex: 1;
+}
+
+.cat-card__ico {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.cat-card__title {
+  font-size: 0.98rem;
+  line-height: 1.28;
+  color: var(--deep);
+  text-wrap: pretty;
+  text-wrap: balance;
+}
+
+.cat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(31, 107, 69, 0.32);
+}
+
+.cat-card:hover .cat-card__media img,
+.cat-card:hover .cat-card__placeholder {
+  transform: scale(1.04);
+}
+
+.subhead {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: clamp(1.45rem, 2.8vw, 1.8rem);
+  margin: 3.5rem 0 1.4rem;
 }
 
 /* Productos: proporciones naturales 4/3 con tarjetas en --crema-claro */
@@ -507,6 +598,31 @@ video::-webkit-media-controls-start-playback-button {
   font-size: 0.94rem;
   color: var(--muted);
   margin-top: 0.18rem;
+  text-wrap: pretty;
+  text-wrap: balance;
+}
+
+/* Cierre de productos con llamado a WhatsApp */
+.products-cta {
+  margin-top: 2.75rem;
+  padding: 1.4rem 1.6rem;
+  background: var(--crema-claro);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+
+.products-cta__text {
+  font-weight: 600;
+  font-size: 1.04rem;
+  color: var(--deep);
+  text-wrap: pretty;
+  text-wrap: balance;
 }
 
 /* Galería "Un vistazo al local": 2 fotos en 4/3 con la misma altura */
@@ -645,14 +761,15 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .about__body {
-  max-width: 48ch;
+  max-width: 50ch;
 }
 
 .about__text {
   color: var(--text);
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.08rem;
+  line-height: 1.72;
   margin-top: 0.6rem;
+  text-wrap: pretty;
 }
 
 /* Visítanos: bloques de ubicación, horario y frontis en arco */
@@ -693,6 +810,7 @@ video::-webkit-media-controls-start-playback-button {
   font-size: 1.35rem;
   color: var(--deep);
   margin-bottom: 1.3rem;
+  text-wrap: balance;
 }
 
 .actions {
@@ -1033,6 +1151,19 @@ main:focus {
     gap: 1.75rem;
   }
 
+  .cat-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cat-card__body {
+    padding: 1rem 1.15rem;
+  }
+
+  .cat-card__title {
+    font-size: 1.08rem;
+  }
+
   .grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.85rem 1.4rem;
@@ -1044,8 +1175,8 @@ main:focus {
   }
 
   .about {
-    grid-template-columns: 1.25fr 0.95fr;
-    gap: 3.25rem;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
   }
 
   .visit {
@@ -1091,6 +1222,14 @@ main:focus {
     gap: 2.25rem;
   }
 
+  .cat-grid {
+    gap: 1.75rem;
+  }
+
+  .cat-card__title {
+    font-size: 1.14rem;
+  }
+
   .grid {
     gap: 2.25rem 1.75rem;
   }
@@ -1119,6 +1258,7 @@ main:focus {
   }
 
   .product:hover .product__media,
+  .cat-card:hover,
   .gallery__item:hover,
   .btn--wa:hover,
   .btn--ghost:hover,
@@ -1128,6 +1268,8 @@ main:focus {
 
   .product:hover .product__media img,
   .product:hover .fruit,
+  .cat-card:hover .cat-card__media img,
+  .cat-card:hover .cat-card__placeholder,
   .gallery__item:hover img {
     transform: none;
   }
